@@ -1,775 +1,388 @@
 <!DOCTYPE html>
-
 <html lang="en" class="scroll-smooth">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Gaurav Kurmi | Premium Creative Services</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-
         body { 
-
             font-family: 'Inter', sans-serif; 
-
             background-color: #020617; 
-
             color: #f8fafc;
-
             background-image: 
-
                 linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-
                 linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-
             background-size: 50px 50px;
-
         }
-
-
 
         /* Top Announcement Ticker */
-
         .ticker-wrap {
-
             width: 100%; background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-
             overflow: hidden; height: 35px; display: flex; align-items: center;
-
         }
-
         .ticker-content {
-
             display: flex; white-space: nowrap; animation: ticker 25s linear infinite;
-
             font-size: 0.85rem; font-weight: 600;
-
         }
-
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-
-
         /* Headings & Glow Buttons */
-
         .color-motion {
-
             background: linear-gradient(270deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
-
             background-size: 300% 300%; -webkit-background-clip: text;
-
             -webkit-text-fill-color: transparent; animation: gradient-shift 5s ease infinite;
-
         }
-
         @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-
-
         .glow-btn {
-
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-
             transition: all 0.3s ease;
-
         }
-
         .glow-btn:hover {
-
             box-shadow: 0 0 25px rgba(59, 130, 246, 1);
-
             transform: scale(1.05);
-
         }
-
-
 
         /* Banners Motion */
-
         .aspect-desktop { aspect-ratio: 9/3; }
-
         .aspect-mobile { aspect-ratio: 4/5; }
-
         .hero-slide {
-
             opacity: 0; transform: scale(1);
-
             transition: opacity 1.5s ease-in-out, transform 6s linear;
-
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-
         }
-
         .hero-slide.active { opacity: 1; transform: scale(1.08); z-index: 10; }
 
-
-
         /* Glassmorphism Bento Cards */
-
         .glass-card {
-
             background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-
             border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem;
-
             transition: all 0.4s ease; position: relative; overflow: hidden;
-
         }
-
         .glass-card:hover { transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 0 25px rgba(59, 130, 246, 0.2); }
 
-
-
         .price-row {
-
             display: flex; justify-content: space-between; padding: 10px 0;
-
             border-bottom: 1px dashed rgba(255,255,255,0.1); font-size: 0.9rem;
-
         }
-
         .price-row:last-child { border-bottom: none; }
 
-
-
         /* Clients Seamless Marquee */
-
         .client-marquee {
-
             overflow: hidden; white-space: nowrap; display: flex;
-
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-
         }
-
         .client-track { display: flex; gap: 4rem; padding-right: 4rem; animation: scroll-left 15s linear infinite; }
-
         .client-track img { height: 50px; object-fit: contain; filter: invert(1) opacity(0.5); transition: 0.3s; }
-
         .client-track img:hover { filter: invert(1) opacity(1); transform: scale(1.1); }
-
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-
-
         /* Work Sample Hover */
-
         .work-img-wrapper { overflow: hidden; border-radius: 0.5rem; position: relative; }
-
         .work-img-wrapper img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
-
         .work-img-wrapper:hover img { transform: scale(1.1); }
-
         .work-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); opacity: 0; transition: 0.3s; }
-
         .work-img-wrapper:hover .work-overlay { opacity: 1; }
 
-
-
         /* Scroll to top button */
-
         #scrollTopBtn { transition: opacity 0.3s, transform 0.3s; opacity: 0; pointer-events: none; }
-
         #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
-
     </style>
-
 </head>
-
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
-
-
     <div class="ticker-wrap fixed top-0 z-[60]">
-
         <div class="ticker-content">
-
             <span class="mx-10">🚀 Get upto 20% off on your bulk designs</span>
-
             <span class="mx-10">✨ 4 Festive Art work free on bulk design over ₹9,999</span>
-
             <span class="mx-10">🚀 Get upto 20% off on your bulk designs</span>
-
             <span class="mx-10">✨ 4 Festive Art work free on bulk design over ₹9,999</span>
-
         </div>
-
     </div>
-
-
 
     <nav class="fixed w-full z-50 bg-[#020617]/80 backdrop-blur-lg border-b border-white/10 top-[35px]">
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-20 items-center">
-
             <div class="font-black text-2xl tracking-tighter text-white uppercase">
-
                 Gaurav <span class="color-motion">Kurmi</span>
-
             </div>
-
             <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold tracking-widest text-slate-300">
-
                 <a href="#design" class="hover:text-blue-400 transition">Design Rates</a>
-
                 <a href="#video" class="hover:text-blue-400 transition">Video & AI</a>
-
                 <a href="#work" class="hover:text-blue-400 transition">Portfolio</a>
-
                 <a href="#terms" class="hover:text-blue-400 transition">Policies</a>
-
                 <a href="mailto:connectadocreate@gmail.com" class="glow-btn bg-blue-600 text-white px-6 py-2 rounded-full shadow-lg border border-blue-400"><i class="fas fa-envelope mr-2"></i>Contact</a>
-
             </div>
-
         </div>
-
     </nav>
 
-
-
     <a href="https://wa.me/918433415139" target="_blank" class="fixed bottom-6 left-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(34,197,94,0.4)] z-[100] transition-transform hover:scale-110">
-
         <i class="fab fa-whatsapp"></i>
-
     </a>
-
     <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg z-[100] hover:-translate-y-2">
-
         <i class="fas fa-arrow-up"></i>
-
     </button>
 
-
-
     <header class="pt-[115px] relative">
-
         <div class="hidden md:block w-full aspect-desktop relative overflow-hidden bg-slate-900">
-
             <img src="im.png" class="hero-slide slide-desktop active"><img src="im1.png" class="hero-slide slide-desktop"><img src="im2.png" class="hero-slide slide-desktop">
-
             <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent z-20"></div>
-
         </div>
-
         <div class="block md:hidden w-full aspect-mobile relative overflow-hidden bg-slate-900">
-
             <img src="m1.png" class="hero-slide slide-mobile active"><img src="m2.png" class="hero-slide slide-mobile"><img src="m3.png" class="hero-slide slide-mobile">
-
             <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent z-20"></div>
-
         </div>
-
     </header>
 
-
-
     <section id="design" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="text-center mb-12">
-
             <h3 class="text-4xl md:text-5xl font-black text-white color-motion uppercase tracking-tight">Graphic Design Menu</h3>
-
         </div>
-
         
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
             <div class="glass-card p-6">
-
                 <h4 class="text-xl font-bold text-white mb-4"><i class="fas fa-hashtag text-blue-500 mr-2"></i>Social Media Posts</h4>
-
                 <div class="price-row"><span class="text-slate-300">Single Static Post</span><span class="font-bold text-white">Rs. 400</span></div>
-
                 <div class="price-row"><span class="text-slate-300">IG Story (Single)</span><span class="font-bold text-white">Rs. 350</span></div>
-
                 <div class="price-row"><span class="text-slate-300">IG Stories Pack (5)</span><span class="font-bold text-white">Rs. 1,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">FB / LinkedIn Post</span><span class="font-bold text-white">Rs. 400</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Twitter / X Banner</span><span class="font-bold text-white">Rs. 350</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Quote/Typography</span><span class="font-bold text-white">Rs. 300</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Festival Greeting</span><span class="font-bold text-white">Rs. 500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Product Showcase</span><span class="font-bold text-white">Rs. 600</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Sale/Offer Announce</span><span class="font-bold text-white">Rs. 550</span></div>
-
                 <div class="price-row"><span class="text-slate-300">YouTube Community</span><span class="font-bold text-white">Rs. 400</span></div>
-
                 <div class="price-row"><span class="text-slate-300">WhatsApp Banner</span><span class="font-bold text-white">Rs. 400</span></div>
-
             </div>
 
-
-
             <div class="glass-card p-6">
-
                 <h4 class="text-xl font-bold text-white mb-4"><i class="fas fa-layer-group text-blue-500 mr-2"></i>Carousels & Banners</h4>
-
                 <div class="price-row"><span class="text-slate-300">Carousel - 3 Slides</span><span class="font-bold text-white">Rs. 800</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Carousel - 5 Slides</span><span class="font-bold text-white">Rs. 1,200</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Carousel - 7 Slides</span><span class="font-bold text-white">Rs. 1,700</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Carousel - 10 Slides</span><span class="font-bold text-white">Rs. 2,200</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Edu/Infographic - 5</span><span class="font-bold text-white">Rs. 1,800</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Step-by-Step - 10</span><span class="font-bold text-white">Rs. 2,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Product Feature - 5</span><span class="font-bold text-white">Rs. 1,400</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Web Hero Banner</span><span class="font-bold text-white">Rs. 900</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Google Display Ad</span><span class="font-bold text-white">Rs. 700</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Google Ad Set (5)</span><span class="font-bold text-white">Rs. 2,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Digital Billboard</span><span class="font-bold text-white">Rs. 1,000</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Event/Webinar Banner</span><span class="font-bold text-white">Rs. 800</span></div>
-
             </div>
-
-
 
             <div class="glass-card p-6">
-
                 <h4 class="text-xl font-bold text-white mb-4"><i class="fas fa-gem text-blue-500 mr-2"></i>Identity & More</h4>
-
                 <div class="price-row"><span class="text-slate-300">Logo (3 Concepts)</span><span class="font-bold text-white">Rs. 2,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Logo (5 Concepts)</span><span class="font-bold text-white">Rs. 5,000</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Complete Brand Kit</span><span class="font-bold text-white">Rs. 8,000</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Brand Style Guide</span><span class="font-bold text-white">Rs. 1,800</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Template Pack (5)</span><span class="font-bold text-white">Rs. 3,000</span></div>
-
                 <div class="price-row"><span class="text-slate-300">YT Thumb Single</span><span class="font-bold text-white">Rs. 300</span></div>
-
                 <div class="price-row"><span class="text-slate-300">YT Thumb Pack (5)</span><span class="font-bold text-white">Rs. 1,200</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Detailed Infographic</span><span class="font-bold text-white">Rs. 2,000</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Digital Menu Card</span><span class="font-bold text-white">Rs. 1,200</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Presentation (10 Slides)</span><span class="font-bold text-white">Rs. 2,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Presentation (20 Slides)</span><span class="font-bold text-white">Rs. 4,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Photo Retouching</span><span class="font-bold text-white">Rs. 200/img</span></div>
-
             </div>
-
         </div>
-
         <div class="mt-6 border border-white/10 rounded-full overflow-hidden bg-white/5 py-2">
-
             <div class="ticker-content" style="animation-duration: 20s;">
-
                 <span class="mx-6 text-slate-400">⚡ 10+ posts/month → 15% off | 20+ posts → 25% off | Original PSD/AI file on request at extra charge</span>
-
                 <span class="mx-6 text-slate-400">⚡ 10+ posts/month → 15% off | 20+ posts → 25% off | Original PSD/AI file on request at extra charge</span>
-
             </div>
-
         </div>
-
     </section>
-
-
 
     <section id="video" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5">
-
         <div class="text-center mb-12">
-
             <h3 class="text-4xl md:text-5xl font-black text-white color-motion uppercase tracking-tight">Video & AI Content</h3>
-
         </div>
-
         
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-
             <div class="glass-card p-6">
-
                 <h4 class="text-xl font-bold text-white mb-4"><i class="fas fa-robot text-blue-500 mr-2"></i>AI-Powered Reels</h4>
-
                 <div class="price-row"><span class="text-slate-300">30s AI Visuals + Music</span><span class="font-bold text-white">Rs. 1,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">30s AI Voice + Visuals</span><span class="font-bold text-white">Rs. 2,200</span></div>
-
                 <div class="price-row"><span class="text-slate-300">60s AI Visuals + Music</span><span class="font-bold text-white">Rs. 2,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">60s AI Voice + Visuals</span><span class="font-bold text-white">Rs. 3,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Product Promo AI 30s</span><span class="font-bold text-white">Rs. 2,500</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Motivational/Quote AI 30s</span><span class="font-bold text-white">Rs. 1,800</span></div>
-
                 <div class="price-row"><span class="text-slate-300">AI Avatar Talking 30s</span><span class="font-bold text-white">Rs. 3,000</span></div>
-
                 <div class="price-row"><span class="text-slate-300">AI Avatar Talking 60s</span><span class="font-bold text-white">Rs. 5,000</span></div>
-
             </div>
-
-
 
             <div class="glass-card p-6">
-
                 <h4 class="text-xl font-bold text-white mb-4"><i class="fas fa-video text-blue-500 mr-2"></i>Video Editing (Reels & Shorts)</h4>
-
                 <div class="price-row"><span class="text-slate-300">30s Raw + Music Only</span><span class="font-bold text-white">Rs. 600</span></div>
-
                 <div class="price-row"><span class="text-slate-300">30s Cuts + Text + Music</span><span class="font-bold text-white">Rs. 900</span></div>
-
                 <div class="price-row"><span class="text-slate-300">60s Basic Edit + Music</span><span class="font-bold text-white">Rs. 1,200</span></div>
-
                 <div class="price-row"><span class="text-slate-300">60s Full Edit (Captions)</span><span class="font-bold text-white">Rs. 1,800</span></div>
-
                 <div class="price-row"><span class="text-slate-300">IG/YT Shorts up to 60s</span><span class="font-bold text-white">Rs. 1,400</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Auto Captions Added</span><span class="font-bold text-white">Rs. 300</span></div>
-
                 <div class="price-row"><span class="text-slate-300">BG Music Sync Only</span><span class="font-bold text-white">Rs. 350</span></div>
-
                 <div class="price-row"><span class="text-slate-300">Color Grading / LUT Apply</span><span class="font-bold text-white">Rs. 350</span></div>
-
             </div>
-
         </div>
-
         <div class="mt-6 border border-white/10 rounded-full overflow-hidden bg-white/5 py-2 max-w-5xl mx-auto">
-
             <div class="ticker-content" style="animation-duration: 20s;">
-
                 <span class="mx-6 text-slate-400">🎬 MP4 (1080p) only | Project files NOT shared | Data deleted after delivery | Min. delivery: 2 days</span>
-
                 <span class="mx-6 text-slate-400">🎬 MP4 (1080p) only | Project files NOT shared | Data deleted after delivery | Min. delivery: 2 days</span>
-
             </div>
-
         </div>
-
     </section>
-
-
 
     <section id="work" class="py-20 bg-[#020617] border-t border-white/5">
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
             <div class="text-center mb-16">
-
                 <h3 class="text-4xl font-black text-white color-motion uppercase">Work Samples</h3>
-
             </div>
-
             
-
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
-
                 <script>for(let i=1; i<=5; i++) document.write(`<div class="work-img-wrapper aspect-square"><img src="p${i}.png"><div class="work-overlay"></div></div>`);</script>
-
             </div>
-
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
-
                 <script>for(let i=6; i<=10; i++) document.write(`<div class="work-img-wrapper aspect-[4/5]"><img src="p${i}.png"><div class="work-overlay"></div></div>`);</script>
-
             </div>
-
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-
                 <script>for(let i=11; i<=15; i++) document.write(`<div class="work-img-wrapper aspect-[9/16]"><img src="p${i}.png"><div class="work-overlay"></div></div>`);</script>
-
             </div>
-
         </div>
-
     </section>
-
-
 
     <section id="terms" class="py-16 bg-[#060b19] border-t border-white/5">
-
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
             <div class="text-center mb-12">
-
                 <h3 class="text-3xl font-black text-white uppercase tracking-widest"><i class="fas fa-file-contract text-blue-500 mr-3"></i>Terms & Policies</h3>
-
             </div>
-
             <div class="grid md:grid-cols-2 gap-6 text-slate-300 text-sm">
-
                 <div class="glass-card p-6">
-
                     <h5 class="text-white font-bold mb-2">Revisions & Changes</h5>
-
                     <p>2 free revisions included. Any changes after that cost Rs. 200 per revision round. Changes to brief after work has started may incur extra charges. New brief = new quote.</p>
-
                 </div>
-
                 <div class="glass-card p-6">
-
                     <h5 class="text-white font-bold mb-2">Payments & Rush Delivery</h5>
-
                     <p>50% advance to begin. Remaining 50% before final delivery. For 24-hr rush delivery, a +30% surcharge applies (subject to availability).</p>
-
                 </div>
-
                 <div class="glass-card p-6">
-
                     <h5 class="text-white font-bold mb-2">File Formats</h5>
-
                     <p>Design: JPG/PNG/PDF delivered. Original PSD/AI files available on request at extra charge.<br>Video: MP4 (1080p) only. Project/source files are NOT shared.</p>
-
                 </div>
-
                 <div class="glass-card p-6">
-
                     <h5 class="text-white font-bold mb-2">Rights & Data Policy</h5>
-
                     <p>Full usage rights transferred to client upon receipt of final payment. All client files permanently deleted from the system once final delivery is completed.</p>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
-
 
     <section class="py-16 bg-white/5 border-y border-white/10">
-
         <div class="text-center mb-8"><h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Trusted By</h3></div>
-
         <div class="client-marquee">
-
             <div class="client-track"><img src="c1.png"><img src="c2.png"><img src="c3.png"><img src="c4.png"><img src="c5.png"></div>
-
             <div class="client-track"><img src="c1.png"><img src="c2.png"><img src="c3.png"><img src="c4.png"><img src="c5.png"></div>
-
         </div>
-
     </section>
 
-
-
     <footer class="bg-black py-12 border-t border-white/10">
-
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center md:text-left">
-
             <div>
-
                 <h2 class="text-2xl font-black text-white mb-2 uppercase tracking-widest">Gaurav Kurmi</h2>
-
                 <p class="text-slate-400 text-sm mb-4">3 years+ experience and worked with various field clients.</p>
-
                 <p class="text-blue-400 font-bold"><i class="fas fa-phone-alt mr-2"></i>+91 8433415139</p>
-
                 <p class="text-blue-400 font-bold mt-2"><i class="fas fa-envelope mr-2"></i>connectadocreate@gmail.com</p>
-
             </div>
-
             <div>
-
                 <h3 class="text-white font-bold mb-4 uppercase tracking-wider">Section Links</h3>
-
                 <ul class="space-y-2 text-slate-400 text-sm">
-
                     <li><a href="#design" class="hover:text-blue-400 transition">Graphic Design Rates</a></li>
-
                     <li><a href="#video" class="hover:text-blue-400 transition">Video & AI Content</a></li>
-
                     <li><a href="#work" class="hover:text-blue-400 transition">Portfolio Samples</a></li>
-
                     <li><a href="#terms" class="hover:text-blue-400 transition">Terms & Policies</a></li>
-
                 </ul>
-
             </div>
-
             <div>
-
                 <h3 class="text-white font-bold mb-4 uppercase tracking-wider">Quick Links</h3>
-
                 <ul class="space-y-2 text-slate-400 text-sm">
-
                     <li><button onclick="toggleModal('refundModal')" class="hover:text-blue-400 transition">Refund Policy</button></li>
-
                     <li><button onclick="toggleModal('privacyModal')" class="hover:text-blue-400 transition">Privacy Policy</button></li>
-
                 </ul>
-
             </div>
-
         </div>
-
         <div class="text-center text-slate-600 text-sm mt-12 pt-8 border-t border-white/10">
-
             &copy; 2026 Gaurav Kurmi. All rights reserved.
-
         </div>
-
     </footer>
 
-
-
     <div id="refundModal" class="fixed inset-0 bg-black/80 z-[200] hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none">
-
         <div class="bg-slate-900 border border-slate-700 rounded-xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300">
-
             <button onclick="toggleModal('refundModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl"><i class="fas fa-times"></i></button>
-
             <h3 class="text-2xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Refund Policy</h3>
-
             <p class="text-slate-300 text-sm leading-relaxed">
-
                 No refund will be provided once the final files have been delivered. A partial refund is only applicable if the work hasn't commenced yet. Once the project begins, the advance payment becomes non-refundable to cover the time and resources invested.
-
             </p>
-
         </div>
-
     </div>
-
-
 
     <div id="privacyModal" class="fixed inset-0 bg-black/80 z-[200] hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none">
-
         <div class="bg-slate-900 border border-slate-700 rounded-xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300">
-
             <button onclick="toggleModal('privacyModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl"><i class="fas fa-times"></i></button>
-
             <h3 class="text-2xl font-bold text-white mb-4 border-b border-slate-700 pb-2">Privacy & Data Policy</h3>
-
             <p class="text-slate-300 text-sm leading-relaxed mb-4">
-
                 Your privacy and the security of your brand assets are strictly maintained. We do not share your raw data or unapproved designs with third parties.
-
             </p>
-
             <p class="text-slate-300 text-sm leading-relaxed font-bold">
-
                 Data Deletion: All client files are permanently deleted from our system once the final delivery is completed to ensure your data security. Please maintain your own backups upon receipt.
-
             </p>
-
         </div>
-
     </div>
 
-
-
     <script>
-
         // Hero Slider Ken Burns
-
         function runSlider(selector) {
-
             const slides = document.querySelectorAll(selector);
-
             if(slides.length === 0) return;
-
             let i = 0;
-
             setInterval(() => {
-
                 slides[i].classList.remove('active');
-
                 i = (i + 1) % slides.length;
-
                 slides[i].classList.add('active');
-
             }, 6000); 
-
         }
-
         runSlider('.slide-desktop');
-
         runSlider('.slide-mobile');
 
-
-
         // Scroll to Top Button Logic
-
         const topBtn = document.getElementById("scrollTopBtn");
-
         window.onscroll = function() {
-
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-
                 topBtn.classList.add("visible");
-
             } else {
-
                 topBtn.classList.remove("visible");
-
             }
-
         };
 
-
-
         // Modal Logic
-
         function toggleModal(modalID) {
-
             const modal = document.getElementById(modalID);
-
             if (modal.classList.contains('hidden')) {
-
                 modal.classList.remove('hidden');
-
                 // slight delay to allow display:block to apply before animating opacity
-
                 setTimeout(() => {
-
                     modal.classList.remove('opacity-0', 'pointer-events-none');
-
                     modal.children[0].classList.remove('scale-95');
-
                 }, 10);
-
             } else {
-
                 modal.classList.add('opacity-0', 'pointer-events-none');
-
                 modal.children[0].classList.add('scale-95');
-
                 setTimeout(() => {
-
                     modal.classList.add('hidden');
-
                 }, 300); // Wait for transition to finish
-
             }
-
         }
-
     </script>
-
 </body>
-
 </html>
